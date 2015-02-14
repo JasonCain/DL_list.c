@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include"DL_list.h"
 
@@ -187,4 +188,24 @@ void DL_list_delete (DL_list* self) {
   self->length -= 1;
   free (self);
   DL_node_delete (tmp);
+}
+
+void DL_list_del (DL_list* self) {
+  if (self->head == self->tail) {
+    free (self->head);
+    free (self);
+  } else {
+    DL_list_del_prepend (self);
+    DL_list_del (self);
+  }
+}
+
+DL_list* DL_list_create (DL_list* self, void* data) {
+  if (self->length =! NULL) {
+    DL_list_append (self, data);
+    return self;
+  } else {
+    DL_list* tmp = DL_new (data);
+    return tmp;
+  }
 }

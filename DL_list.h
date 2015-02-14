@@ -50,4 +50,6 @@ void DL_list_del_append (DL_list* self);
 
 void DL_list_delete (DL_list* self);
 
+void DL_list_del (DL_list* self);
+
 #endif // DL_LIST
